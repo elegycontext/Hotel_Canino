@@ -15,18 +15,20 @@ public class Hotel_Canino {
         int i = 0, j;           //variables de contadores
         String ver;
 
-        BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
-        
-        //for (int l=0 ; l<=4;l++){
-         //   lista[l]="vacio";
-        //}
+        BufferedReader br = new BufferedReader (new InputStreamReader(System.in)); //Leer por teclado
 
-        while ("s".equals(continuar)){
+        while ("s".equals(continuar)){   //Bucle
             
-            try{
+            try{                           //Trata de leer por teclado
             System.out.println("Que operacion desea realizar:\nA.- Agregar.\nB.- Modificar.\nC.- Eliminar.\nD.- Ninguna.");
             opcion = br.readLine();
-
+            /*
+            Menu de opciones a realizar
+            a
+            b
+            c
+            cualquier otro caracter dara la opcion de salir
+            */
             if (opcion.equals("a")){
                perro agregar = new perro();
                agregar.agregar();
@@ -55,11 +57,11 @@ public class Hotel_Canino {
             System.out.print("Desea continuar(s/n):");
             continuar = br.readLine();
             }
-            catch(IOException | NumberFormatException e){
+            catch(IOException | NumberFormatException e){       //En caso te toparse con algun error al tomar los datos nos pedira ingresarlos otra vez
                 System.err.println("Se produjo un Error: " + e.getMessage() + ".Por favor vuelva a ingresar los datos");
             }
         }        
-        System.out.print("Ver la lista(s/n):");
+        System.out.print("Ver la lista(s/n):");             //Sentencias para ver el arreglo
         ver = br.readLine();
         
         if ("s".equals(ver)){

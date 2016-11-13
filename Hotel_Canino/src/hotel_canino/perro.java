@@ -11,7 +11,10 @@ public class perro {
         String fecha, raza, color, nombre, edad, dueño, ci, datos;
     
     void agregar() throws IOException{
-     
+        /*
+            Dentro del bloque del try se solicitan todos los datos, en caso de 
+            en caso de que se genere algun error lo muestra y sale.
+        */
     BufferedReader br = new BufferedReader (new InputStreamReader(System.in));
     try{
     System.out.print("Ingrese fecha:");
@@ -38,6 +41,10 @@ public class perro {
     catch(Exception e){
         System.err.println("Se produjo un Error: " + e.getMessage());
     }
+    
+    /*
+        La variable datos guarda todos los datos tanto del perro como de su dueño
+    */
     datos = "Fecha de ingreso: " + fecha + "\n" + "Raza: " + raza + "\n" + 
             "Color: " + color + "\n" + "Nombre: " + nombre + "\n" + "Edad: " + 
             edad + "\n" + "Dueño: " + dueño + "\n" + "Cedula: " + ci;
