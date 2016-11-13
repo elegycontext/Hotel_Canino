@@ -7,20 +7,27 @@ public class Hotel_Canino {
     public static void main(String[] args) throws IOException {
     
         String continuar = "s";
-        String lista[];             //Se crea el arreglo
-        lista = new String[5];
+        String lista[][];             //Se crea el arreglo
+        lista = new String[5][4];
 
         String opcion;      //variable de opciones
         
-        int i = 0, j;           //variables de contadores
-        String ver;
+        int i, j, m, k, contador;           //variables de contadores
+        String ver, termino;
 
         BufferedReader br = new BufferedReader (new InputStreamReader(System.in)); //Leer por teclado
-
+        
+        for(i=0;i<5;i++){
+            for(j=0;j<4;j++){
+                lista[i][j]="Vacio";
+            }
+        }
+        
+        i = 0;
         while ("s".equals(continuar)){   //Bucle
             
             try{                           //Trata de leer por teclado
-            System.out.println("Que operacion desea realizar:\nA.- Agregar.\nB.- Modificar.\nC.- Eliminar.\nD.- Ninguna.");
+            System.out.println("Que operacion desea realizar:\nA.- Agregar.\nB.- Modificar.\nC.- Eliminar.\nD.- Buscar.\nE.- Ninguna.");
             opcion = br.readLine();
             /*
             Menu de opciones a realizar
@@ -32,25 +39,55 @@ public class Hotel_Canino {
             if (opcion.equals("a")){
                perro agregar = new perro();
                agregar.agregar();
-               lista[i]= agregar.datos;
+               lista[i][0]= agregar.datos;
+               lista[i][1]= agregar.dueño;
+               lista[i][2]= agregar.raza;
+               lista[i][3]= agregar.color;
                i++;
             }
             else{
                 if ("b".equals(opcion)){
                     System.out.print("Ingrese el numero que desea modificar(0-4):");
-                    j = Integer.parseInt(br.readLine());
+                    m = Integer.parseInt(br.readLine());
                     perro modificar = new perro();
                     modificar.agregar();
-                    lista[j]=modificar.datos;
+                    lista[m][0]= modificar.datos;
+                    lista[m][1]= modificar.dueño;
+                    lista[m][2]= modificar.raza;
+                    lista[m][3]= modificar.color;
+                    
                 }
                 else{
                     if (opcion.equals("c")){
                     System.out.print("Ingrese el numero que desea eliminar(0-4):");
-                    j = Integer.parseInt(br.readLine());
-                    lista[j]=null;
+                    k = Integer.parseInt(br.readLine());
+                    lista[k][0]="Vacio";
+                    lista[k][1]="Vacio";
+                    lista[k][2]="Vacio";
+                    lista[k][3]="Vacio";
                     }
                     else{
+                        if("d".equals(opcion)){
+                            contador = 0;
+                            System.out.println("Ingrese sobre que desea hacer la consulta:\n1.- Dueño.\n2.- Razar.\n3.- Color.");
+                            j=Integer.parseInt(br.readLine());
+                            System.out.print("Ingrese el termino que desea buscar: ");
+                            termino=br.readLine();
+                            
+                            for (k=0;k<5;k++){
+                                //System.out.println(i);
+                                //System.out.println(j);
+                                System.out.println(lista[k][j]);
+                                if (termino.equals(lista[k][j])){
+                                    contador++;    
+                                }
+                            }
+
+                            System.out.println("Se encontraron: " + contador + " coincidencias");
+                        }
+                        else{
                             continuar = "n";
+                        }
                         }
                 }
             }
@@ -65,8 +102,8 @@ public class Hotel_Canino {
         ver = br.readLine();
         
         if ("s".equals(ver)){
-                for (int z = 0;z <= 4;z++){
-                    System.out.println(lista[z]);
+                for (i = 0;i <= 4;i++){
+                    System.out.println(lista[i][0]);
                 }
             }
     }
